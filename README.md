@@ -11,3 +11,9 @@ spec:
   deploymentName: example-deployment
   replicas: 2
 ```
+## ref
+```text
+sample-controller：https://github.com/kubernetes/sample-controller/tree/v0.28.0
+
+code-generator：https://github.com/kubernetes/code-generator/tree/v0.28.0
+```
