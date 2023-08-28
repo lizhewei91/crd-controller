@@ -25,6 +25,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/klog/v2"
 
+	"crd-controller/pkg/controller"
 	clientset "crd-controller/pkg/generated/clientset/versioned"
 	informers "crd-controller/pkg/generated/informers/externalversions"
 	"crd-controller/pkg/signals"
@@ -67,7 +68,7 @@ func main() {
 	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second*30)
 	crdInformerFactory := informers.NewSharedInformerFactory(crdClient, time.Second*30)
 
-	controller := NewController(ctx, kubeClient, crdClient,
+	controller := controller.NewController(ctx, kubeClient, crdClient,
 		kubeInformerFactory.Apps().V1().Deployments(),
 		crdInformerFactory.Extension().V1().UnitedDeployments())
 
