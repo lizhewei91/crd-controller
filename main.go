@@ -29,6 +29,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	kubeinformers "k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/tools/leaderelection"
 	"k8s.io/client-go/tools/leaderelection/resourcelock"
@@ -77,7 +78,7 @@ func main() {
 		}()
 	}
 
-	cfg, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+	cfg, err := buildConfig(kubeconfig)
 	if err != nil {
 		logger.Error(err, "Error building kubeconfig")
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
@@ -157,4 +158,20 @@ func main() {
 			},
 		},
 	})
+}
+
+func buildConfig(kubeconfig string) (*rest.Config, error) {
+	if kubeconfig != "" {
+		cfg, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+		if err != nil {
+			return nil, err
+		}
+		return cfg, nil
+	}
+
+	cfg, err := rest.InClusterConfig()
+	if err != nil {
+		return nil, err
+	}
+	return cfg, nil
 }
