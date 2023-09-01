@@ -19,23 +19,23 @@ limitations under the License.
 package fake
 
 import (
-	v1 "crd-controller/pkg/generated/clientset/versioned/typed/extension/v1"
+	v1 "crd-controller/pkg/generated/clientset/versioned/typed/extensions/v1"
 
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
 
-type FakeExtensionV1 struct {
+type FakeExtensionsV1 struct {
 	*testing.Fake
 }
 
-func (c *FakeExtensionV1) UnitedDeployments(namespace string) v1.UnitedDeploymentInterface {
+func (c *FakeExtensionsV1) UnitedDeployments(namespace string) v1.UnitedDeploymentInterface {
 	return &FakeUnitedDeployments{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *FakeExtensionV1) RESTClient() rest.Interface {
+func (c *FakeExtensionsV1) RESTClient() rest.Interface {
 	var ret *rest.RESTClient
 	return ret
 }

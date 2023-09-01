@@ -3,7 +3,7 @@
 
 ## cr 示例
 ```yaml
-apiVersion: extension.k8s.io/v1
+apiVersion: extensions.k8s.io/v1
 kind: UnitedDeployment
 metadata:
   name: examples-united-deployment

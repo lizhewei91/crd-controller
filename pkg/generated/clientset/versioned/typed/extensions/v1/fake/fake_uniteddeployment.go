@@ -20,7 +20,7 @@ package fake
 
 import (
 	"context"
-	v1 "crd-controller/pkg/apis/extension/v1"
+	v1 "crd-controller/pkg/apis/extensions/v1"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
@@ -31,7 +31,7 @@ import (
 
 // FakeUnitedDeployments implements UnitedDeploymentInterface
 type FakeUnitedDeployments struct {
-	Fake *FakeExtensionV1
+	Fake *FakeExtensionsV1
 	ns   string
 }
 

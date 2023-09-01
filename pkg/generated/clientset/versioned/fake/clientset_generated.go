@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "crd-controller/pkg/generated/clientset/versioned"
-	extensionv1 "crd-controller/pkg/generated/clientset/versioned/typed/extension/v1"
-	fakeextensionv1 "crd-controller/pkg/generated/clientset/versioned/typed/extension/v1/fake"
+	extensionsv1 "crd-controller/pkg/generated/clientset/versioned/typed/extensions/v1"
+	fakeextensionsv1 "crd-controller/pkg/generated/clientset/versioned/typed/extensions/v1/fake"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
@@ -80,7 +80,7 @@ var (
 	_ testing.FakeClient  = &Clientset{}
 )
 
-// ExtensionV1 retrieves the ExtensionV1Client
-func (c *Clientset) ExtensionV1() extensionv1.ExtensionV1Interface {
-	return &fakeextensionv1.FakeExtensionV1{Fake: &c.Fake}
+// ExtensionsV1 retrieves the ExtensionsV1Client
+func (c *Clientset) ExtensionsV1() extensionsv1.ExtensionsV1Interface {
+	return &fakeextensionsv1.FakeExtensionsV1{Fake: &c.Fake}
 }

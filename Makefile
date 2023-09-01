@@ -21,7 +21,7 @@ docker-hub-login:
 	docker login ${DOCKER_HUB_REPO} -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD}
 
 build:
-	go build -o /go/src/crd-controller/bin/crd-controller ./cmd/controller/main.go
+	go build -o /go/src/crd-controller/bin/crd-controller main.go
 
 images:
 	docker buildx build \

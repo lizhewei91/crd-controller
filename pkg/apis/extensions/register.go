@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package extension
+package extensions
 
 // GroupName is the group name used in this package
 const (
-	GroupName = "extension.k8s.io"
+	GroupName = "extensions.k8s.io"
 )

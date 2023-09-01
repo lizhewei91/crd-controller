@@ -22,8 +22,8 @@ import (
 
 	clientset "crd-controller/pkg/generated/clientset/versioned"
 	crdscheme "crd-controller/pkg/generated/clientset/versioned/scheme"
-	informers "crd-controller/pkg/generated/informers/externalversions/extension/v1"
-	listers "crd-controller/pkg/generated/listers/extension/v1"
+	informers "crd-controller/pkg/generated/informers/externalversions/extensions/v1"
+	listers "crd-controller/pkg/generated/listers/extensions/v1"
 )
 
 const controllerAgentName = "crd-controller"

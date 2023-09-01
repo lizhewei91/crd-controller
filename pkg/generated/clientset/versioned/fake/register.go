@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	extensionv1 "crd-controller/pkg/apis/extension/v1"
+	extensionsv1 "crd-controller/pkg/apis/extensions/v1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -32,7 +32,7 @@ var scheme = runtime.NewScheme()
 var codecs = serializer.NewCodecFactory(scheme)
 
 var localSchemeBuilder = runtime.SchemeBuilder{
-	extensionv1.AddToScheme,
+	extensionsv1.AddToScheme,
 }
 
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition

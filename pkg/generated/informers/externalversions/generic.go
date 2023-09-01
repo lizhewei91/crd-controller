@@ -19,7 +19,7 @@ limitations under the License.
 package externalversions
 
 import (
-	v1 "crd-controller/pkg/apis/extension/v1"
+	v1 "crd-controller/pkg/apis/extensions/v1"
 	"fmt"
 
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -52,9 +52,9 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=extension.k8s.io, Version=v1
+	// Group=extensions.k8s.io, Version=v1
 	case v1.SchemeGroupVersion.WithResource("uniteddeployments"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Extension().V1().UnitedDeployments().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Extensions().V1().UnitedDeployments().Informer()}, nil
 
 	}
 

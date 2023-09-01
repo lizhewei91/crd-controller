@@ -20,7 +20,7 @@ package externalversions
 
 import (
 	versioned "crd-controller/pkg/generated/clientset/versioned"
-	extension "crd-controller/pkg/generated/informers/externalversions/extension"
+	extensions "crd-controller/pkg/generated/informers/externalversions/extensions"
 	internalinterfaces "crd-controller/pkg/generated/informers/externalversions/internalinterfaces"
 	reflect "reflect"
 	sync "sync"
@@ -243,9 +243,9 @@ type SharedInformerFactory interface {
 	// client.
 	InformerFor(obj runtime.Object, newFunc internalinterfaces.NewInformerFunc) cache.SharedIndexInformer
 
-	Extension() extension.Interface
+	Extensions() extensions.Interface
 }
 
-func (f *sharedInformerFactory) Extension() extension.Interface {
-	return extension.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Extensions() extensions.Interface {
+	return extensions.New(f, f.namespace, f.tweakListOptions)
 }

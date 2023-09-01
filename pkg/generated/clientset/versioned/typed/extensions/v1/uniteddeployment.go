@@ -20,7 +20,7 @@ package v1
 
 import (
 	"context"
-	v1 "crd-controller/pkg/apis/extension/v1"
+	v1 "crd-controller/pkg/apis/extensions/v1"
 	scheme "crd-controller/pkg/generated/clientset/versioned/scheme"
 	"time"
 
@@ -57,7 +57,7 @@ type unitedDeployments struct {
 }
 
 // newUnitedDeployments returns a UnitedDeployments
-func newUnitedDeployments(c *ExtensionV1Client, namespace string) *unitedDeployments {
+func newUnitedDeployments(c *ExtensionsV1Client, namespace string) *unitedDeployments {
 	return &unitedDeployments{
 		client: c.RESTClient(),
 		ns:     namespace,

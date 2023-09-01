@@ -20,10 +20,10 @@ package v1
 
 import (
 	"context"
-	extensionv1 "crd-controller/pkg/apis/extension/v1"
+	extensionsv1 "crd-controller/pkg/apis/extensions/v1"
 	versioned "crd-controller/pkg/generated/clientset/versioned"
 	internalinterfaces "crd-controller/pkg/generated/informers/externalversions/internalinterfaces"
-	v1 "crd-controller/pkg/generated/listers/extension/v1"
+	v1 "crd-controller/pkg/generated/listers/extensions/v1"
 	time "time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -62,16 +62,16 @@ func NewFilteredUnitedDeploymentInformer(client versioned.Interface, namespace s
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ExtensionV1().UnitedDeployments(namespace).List(context.TODO(), options)
+				return client.ExtensionsV1().UnitedDeployments(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ExtensionV1().UnitedDeployments(namespace).Watch(context.TODO(), options)
+				return client.ExtensionsV1().UnitedDeployments(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&extensionv1.UnitedDeployment{},
+		&extensionsv1.UnitedDeployment{},
 		resyncPeriod,
 		indexers,
 	)
@@ -82,7 +82,7 @@ func (f *unitedDeploymentInformer) defaultInformer(client versioned.Interface, r
 }
 
 func (f *unitedDeploymentInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&extensionv1.UnitedDeployment{}, f.defaultInformer)
+	return f.factory.InformerFor(&extensionsv1.UnitedDeployment{}, f.defaultInformer)
 }
 
 func (f *unitedDeploymentInformer) Lister() v1.UnitedDeploymentLister {
