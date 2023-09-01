@@ -7,6 +7,12 @@ DOCKER_HUB_REPO ?= hub.xxx.cn
 DOCKER_HUB_USERNAME ?= xxx
 DOCKER_HUB_PASSWORD ?= xxx
 
+
+# debug模式下，使用的kubeconfig文件
+KUBECONFIG ?= hack/debug/91-cke-068nrd4t2h5mh5fq8tjs-kubeconfig
+# 创建debug-all-in-one
+DEBUG_DEPLOY ?= hack/debug/debug-all-in-one.yaml
+
 .PHONY: all
 all: docker-hub-login build images
 
@@ -15,7 +21,7 @@ docker-hub-login:
 	docker login ${DOCKER_HUB_REPO} -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD}
 
 build:
-	go build -o /go/src/crd-controller/bin/crd-controller main.go
+	go build -o /go/src/crd-controller/bin/crd-controller ./cmd/controller/main.go
 
 images:
 	docker buildx build \

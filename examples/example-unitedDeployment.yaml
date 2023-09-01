@@ -1,7 +1,7 @@
 apiVersion: extension.k8s.io/v1alpha1
 kind: UnitedDeployment
 metadata:
-  name: example-united-deployment
+  name: examples-united-deployment
 spec:
-  deploymentName: example-deployment
+  deploymentName: examples-deployment
   replicas: 1
